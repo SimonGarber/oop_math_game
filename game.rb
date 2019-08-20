@@ -5,6 +5,7 @@ class Game
     @player1 = nil
     @player2 = nil
     @current_player = nil
+    @winning_player = nil
   end
   def get_player_names
     puts "Please enter your name"
@@ -48,13 +49,24 @@ class Game
     end
     if @current_player == @player1
       @current_player = @player2
-      puts "Now its #{@player2.name}'s turn!"
+      puts "-----------New Turn--------------"
+      puts "Score #{@player1.name} --- #{@player1.life_points}/3 vs #{@player2.name} --- #{@player2.life_points}/3"
     else @current_player = @player1
-      puts "Now its #{@player1.name}'s turn!"
+    end
+     if @player1.life_points < 1 || @player2.life_points < 1
+      puts "Game Over!"
+      if @player1.life_points < 1
+         @winning_player = @player2
+      else
+         @winning_player = @player1
+     end
+     puts "#{@winning_player.name} is the winner! "
    end
+  end 
   end
- end 
- end
+end
+    
+      
   
 
   
